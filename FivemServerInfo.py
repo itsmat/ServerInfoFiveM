@@ -7,9 +7,12 @@ import os, sys, time, os.path, ctypes, getpass
 from pystyle import Center, Anime, Colors, Colorate, System
 from colorama import Fore
 from requests import get
+#0.0.2
+import requests
+
 
 ### COLORI E VAR ###
-VERSIONETOOL = "0.0.1 [BETA]"
+VERSIONETOOL = "0.0.2"
 c = Fore.LIGHTCYAN_EX
 g = Fore.LIGHTGREEN_EX
 y = Fore.LIGHTYELLOW_EX
@@ -71,6 +74,35 @@ def caricamento():
 		sys.stdout.flush()
 		time.sleep(0.2)
 
+
+#0.0.2
+global server
+class cercamelo:
+    def link():
+        global server
+
+        headers = {
+            "accept": "application/json, text/plain, */*",
+            "accept-language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+            "sec-ch-ua": '"Chromium";v="96", "Opera GX";v="82", ";Not A Brand";v="99"',
+	    "origin": "https://servers.fivem.net",
+	    "referer": "https://servers.fivem.net/",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Windows"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36 OPR/82.0.4227.25"
+        }
+
+        data = requests.get(f"https://servers-frontend.fivem.net/api/servers/single/{server['id']}", headers=headers)
+        return {
+        	"ip": data.json()["Data"]["connectEndPoints"][0],
+        	"hostname": data.json()["Data"]["hostname"]
+        }
+        pass
+
+#0.0.1
 global ipserver
 ipserver = 'Nessun server impostato'
 global portaserver
@@ -87,7 +119,8 @@ def main():
     print(f"""      {y}[{b}+{y}]{g} Main:                                                                            {y}[{b}+{y}]{c} Settings:
           {y}[{w}1{y}]{g} Info server                                                                      {y}[{w}10{y}]{c} Imposta porta server (default 30120)
           {y}[{w}2{y}]{g} Lista players                                                                    {y}[{w}11{y}]{c} Imposta ip server  
-          {y}[{w}3{y}]{g} Lista players con identifiers        
+          {y}[{w}3{y}]{g} Lista players con identifiers      
+          {y}[{w}4{y}]{g} Ottieni ip da link (cfx.re/join/*)
 
                                                                                      {m}Made by Mat#3616 | github.com/itsmat
                                                                                      {m}IP Server     : {b}{ipserver}
@@ -125,7 +158,7 @@ MapName: {mapname}''')
             input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} IP Server mancante [tasto 11 nella home]!")
             main()
 
-    if scelta == '2' or scelta == '02':
+    elif scelta == '2' or scelta == '02':
         if ipserver != 'Nessun server impostato':
             try:
                 players = get(f'http://{ipserver}:{portaserver}/players.json', timeout=5)
@@ -143,7 +176,7 @@ MapName: {mapname}''')
             input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} IP Server mancante [tasto 11 nella home]!")
             main()
 
-    if scelta == '3' or scelta == '03':
+    elif scelta == '3' or scelta == '03':
         if ipserver != 'Nessun server impostato':
             try:
                 players = get(f'http://{ipserver}:{portaserver}/players.json', timeout=5)
@@ -160,7 +193,22 @@ MapName: {mapname}''')
         else:
             input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} IP Server mancante [tasto 11 nella home]!")
             main()
-
+    elif scelta == '4' or scelta == '04': #0.0.2
+        try:
+            diocane = input(f'''{y}[{b}#{y}]{w} Inserisci il link del server (esempio: cfx.re/join/vjarme):    ''')
+            print(F'{y}[{b}#{y}]{w} Caricamento... Ricerca ip {diocane}')
+            global server
+            server = {}
+            s2 = server['link'] = diocane
+            server['id'] = os.path.basename(s2) 
+            server['data'] = cercamelo.link()
+            print(f"""{g}Operazione Completata{w}
+{b}URL: {diocane} {w}---> {c}IP: {server['data']['ip']}{w}""")
+            input(f"{y}[{b}#{y}]{w} Premi invio per tornare alla home")
+            main()
+        except Exception as errore:
+            input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} Errore [{errore}]!")
+            main()
     elif scelta == '10' or scelta == '010':
         transizione()
         diocaporta = input(f'''{y}[{b}#{y}]{w} Inserisci la porta del server:    ''')
