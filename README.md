@@ -1,13 +1,16 @@
 # ServerInfoFiveM
 Fivem tool to get the information and the player list (also with the identifiers) of a server. Developed in python
 
-## Features
+## Features and Updates
+#### 0.0.1
 - [x] - [Server Info](https://github.com/itsmat/ServerInfoFiveM) - Server Info.
 - [x] - [Player List](https://github.com/itsmat/ServerInfoFiveM) - Player List.
 - [x] - [Player List (with identifiers)](https://github.com/itsmat/ServerInfoFiveM) - Player List (with identifiers).
+#### 0.0.2
+- [x] - [URL to IP](https://github.com/itsmat/ServerInfoFiveM) - Enter the link cfx.re/join/* and you will receive the server ip [screenshot](https://cdn.discordapp.com/attachments/1035898991893811212/1038744042353201223/Cattura.PNG)
 
 ## ScreenShot
-![home.png](https://cdn.discordapp.com/attachments/1035898991893811212/1038516125278941336/Cattura.PNG?size=4096)
+![home.png](https://cdn.discordapp.com/attachments/1035898991893811212/1038743135540477972/image.png?size=4096)
 
 ## Installation guide
 
