@@ -1,5 +1,5 @@
 # ServerInfoFiveM
-Fivem tool to get the information and the player list (also with the identifiers) of a server. Developed in python
+Fivem tool to get the information and the list of players (also with identifiers) of a server with ip resolver (cfx.re/join/* to IP). Developed in python
 
 ## Features and Updates
 #### 0.0.1
