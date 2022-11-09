@@ -8,6 +8,8 @@ Fivem tool to get the information and the list of players (also with identifiers
 - [x] - [Player List (with identifiers)](https://github.com/itsmat/ServerInfoFiveM) - Player List (with identifiers).
 #### 0.0.2
 - [x] - [URL to IP](https://github.com/itsmat/ServerInfoFiveM) - Enter the link cfx.re/join/* and you will receive the server ip [screenshot](https://cdn.discordapp.com/attachments/1035898991893811212/1038744042353201223/Cattura.PNG)
+#### 0.0.3
+- [x] - [Resources List](https://github.com/itsmat/ServerInfoFiveM) - Resources list
 
 ## ScreenShot
 ![home.png](https://cdn.discordapp.com/attachments/1035898991893811212/1038743135540477972/image.png?size=4096)
