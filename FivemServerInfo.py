@@ -12,7 +12,7 @@ import requests
 
 
 ### COLORI E VAR ###
-VERSIONETOOL = "0.0.2"
+VERSIONETOOL = "0.0.3"
 c = Fore.LIGHTCYAN_EX
 g = Fore.LIGHTGREEN_EX
 y = Fore.LIGHTYELLOW_EX
@@ -121,6 +121,7 @@ def main():
           {y}[{w}2{y}]{g} Lista players                                                                    {y}[{w}11{y}]{c} Imposta ip server  
           {y}[{w}3{y}]{g} Lista players con identifiers      
           {y}[{w}4{y}]{g} Ottieni ip da link (cfx.re/join/*)
+          {y}[{w}5{y}]{g} Lista risorse
 
                                                                                      {m}Made by Mat#3616 | github.com/itsmat
                                                                                      {m}IP Server     : {b}{ipserver}
@@ -208,6 +209,22 @@ MapName: {mapname}''')
             main()
         except Exception as errore:
             input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} Errore [{errore}]!")
+            main()
+    elif scelta == '5' or scelta == '05': #0.0.3
+        if ipserver != 'Nessun server impostato':
+            try:
+                info = get(f'http://{ipserver}:{portaserver}/info.json', timeout=5)
+                print('Attendi...')
+                getinfo = info.json()
+                risorse = getinfo["resources"]
+                print(f"{y}{risorse}{w}")
+                input(f"{y}[{b}#{y}]{w} Premi invio per tornare alla home")
+                main()
+            except Exception as errore:
+                input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} Errore [{errore}]!")
+                main()
+        else:
+            input(f"{y}[{Fore.LIGHTRED_EX }!{y}]{w} IP Server mancante [tasto 11 nella home]!")
             main()
     elif scelta == '10' or scelta == '010':
         transizione()
