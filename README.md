@@ -12,7 +12,7 @@ Fivem tool to get the information and the list of players (also with identifiers
 - [x] - [Resources List](https://github.com/itsmat/ServerInfoFiveM) - Resources list
 
 ## ScreenShot
-![home.png](https://imgur.com/a/I4ynaCF)
+https://imgur.com/a/I4ynaCF
 
 ## Installation guide
 
